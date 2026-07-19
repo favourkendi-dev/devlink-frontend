@@ -1,16 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../api/authApi'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/useAuth'
 
 function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-
-  // Lets us change pages after a successful login
-
-  // Gives us access to the login() function from AuthContext
+  const navigate = useNavigate()
   const { login } = useAuth()
 
   const handleSubmit = async (e) => {
@@ -19,12 +16,9 @@ function Login() {
 
     try {
       const response = await loginUser({ username, password })
-      
       login(response.data)
-
-      // Once logged in send the user to the dashboard
       navigate('/dashboard')
-    } catch (err) {
+    } catch {
       setError('Invalid username or password.')
     }
   }
