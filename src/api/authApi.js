@@ -4,3 +4,9 @@ import axiosInstance from './axiosInstance'
 export const registerUser = (userData) => {
   return axiosInstance.post('auth/register/', userData)
 }
+
+// Sends username  and  password to the login endpoint amd on sucess it returns access and refresh tokens
+
+export const loginUser = (credentials) => {
+  return axiosInstance.post('auth/login/', credentials)
+}
