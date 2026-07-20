@@ -21,6 +21,7 @@ function Profile() {
         setGithubUrl(response.data.github_url)
         setSkills(response.data.skills)
       } catch (err) {
+        console.error(err)
         setMessage('Failed to load profile.')
       } finally {
         setLoading(false)
@@ -42,6 +43,7 @@ function Profile() {
       })
       setMessage('Profile updated successfully!')
     } catch (err) {
+      console.error(err)
       setMessage('Failed to update profile.')
     }
   }
