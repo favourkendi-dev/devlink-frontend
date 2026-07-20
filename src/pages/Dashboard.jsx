@@ -27,9 +27,9 @@ function Dashboard() {
   }
 
   useEffect(() => {
-    fetchPosts()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  fetchPosts()
+}, [])
 
   const handleCreatePost = async (e) => {
     e.preventDefault()
